@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        margin: 0;
+      }
+      .map {
+        position: relative;
+        width: 660px;
+        height: 660px;
+        overflow: hidden;
+        border: 1px solid salmon;
+      }
+
+      .map-frame {
+        height: 100%;
+        width: 100%;
+      }
+
+      .map-controls {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .map-view {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        cursor: grab;
+        /* transition: transform 0.1s; */
+        transform: scale(var(--map-scale, 1))
+          translate(var(--map-position-x, -50%), var(--map-position-y, -50%));
+      }
+      .map-view-grabbing {
+        cursor: grabbing;
+      }
+      .map-view-animate {
+        transition: transform 300ms ease-in;
+      }
+
+      .map-scheme {
+        position: relative;
+        z-index: 1;
+      }
+
+      .map-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .map-house-01:hover {
+        cursor: pointer;
+        stroke: salmon;
+        fill: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="map">
+      <div class="map-frame">
+        <div class="map-view">
+          <svg
+            class="map-scheme"
+            width="1200"
+            height="749"
+            viewBox="0 0 1200 749"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <path
+              d="M340.5 680L312.5 706H360.5V697L340.5 680Z"
+              stroke="black"
+              data-id="01"
+              class="map-house map-house-01"
+              fill="transparent"
+            />
+          </svg>
+          <img class="map-image" src="src/genplan.jpg" />
+        </div>
+      </div>
+      <div class="map-controls">
+        <button class="map-zoom-in">+</button>
+        <button class="map-zoom-out">-</button>
+      </div>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
